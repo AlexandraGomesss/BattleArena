@@ -1,6 +1,28 @@
 class Accessories {
 
-  public void increaseAttackPower() {
+    private int increaseAttackPower;
+    private String newAttackType;
+    private int boostDefense;
+
+    public Accessories(String name, int attackBoost, int defenseBoost) {
+        this.increaseAttackPower = increaseAttackPower;
+        this.newAttackType = newAttackType;
+        this.boostDefense = boostDefense;
+    }
+
+    public int getIncreaseAttackPower() {
+        return increaseAttackPower;
+    }
+
+    public String getNewAttackType() {
+        return newAttackType;
+    }
+
+    public int getBoostDefense() {
+        return boostDefense;
+    }
+
+    public void increaseAttackPower() {
       System.out.println("Power increased!");
   }
   public void newAttackType() {
