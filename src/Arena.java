@@ -1,4 +1,8 @@
+import java.util.Random;
+
 public class Arena {
+
+    private Random random = new Random();
 
     //battle begins
     public void hostFights(Creature hero, Creature villain) {
@@ -6,12 +10,15 @@ public class Arena {
         announceFighters(hero, villain);
 
         while(!hero.isDead() && !villain.isDead()) {
-            hero.attack(villain);
-            if(villain.isDead()) {
-                System.out.println("Battle ends!");
-                break;
+            if (random.nextBoolean()) {
+                hero.takeTurn(villain);
+                if (!villain.isDead()){
+                    villain.takeTurn(hero);
+                }
+            } else {
+                villain.takeTurn(hero);
+                if (!hero.isDead()) hero.takeTurn(villain);
             }
-            villain.attack(hero);
         }
         announceWinner(hero, villain);
     }

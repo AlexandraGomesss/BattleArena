@@ -5,8 +5,8 @@ public class Game {
 
     Battlefield battlefield = new Battlefield();
     battlefield.makeGrid();
-    Hero hero = new Hero("Jahel", 2500, 850 );
-    Villain villain = new Villain("Jailer", 2250, 750 );
+    Hero hero = new Hero("Jahel", 2500, 200 );
+    Villain villain = new Villain("Jailer", 2250, 150 );
 
     Arena arena = new Arena();
     arena.hostFights(hero,villain);
