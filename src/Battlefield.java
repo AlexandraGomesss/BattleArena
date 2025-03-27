@@ -16,7 +16,7 @@ public class Battlefield {
             for (int col = 0; col < columns; col++) {
                 int x = padding + col * cellSize;
                 int y = padding + row * cellSize;
-                squares[col][row] = new MySquare(x, y, cellSize);
+                squares[col][row] = new MySquare(x, y, cellSize, "Jahel", "Jailer");
             }
         }
     }
