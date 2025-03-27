@@ -9,6 +9,8 @@ public class Game {
     Villain villain = new Villain("Jailer", 2250, 150 );
 
     Arena arena = new Arena();
+
+    //MThe method the starts the game
     arena.hostFights(hero,villain);
     }
 }

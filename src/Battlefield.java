@@ -6,11 +6,13 @@ public class Battlefield {
     private int cellSize = 800;
     private MySquare[][] squares;
 
+    //Creates the grid
     public Battlefield() {
         squares = new MySquare[columns][rows];
         makeGrid();
     }
 
+    //Defines the grid with the properties
     public void makeGrid() {
         for (int row = 0; row < rows; row++) {
             for (int col = 0; col < columns; col++) {

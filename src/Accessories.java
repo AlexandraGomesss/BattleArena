@@ -4,6 +4,7 @@ class Accessories {
     private String newAttackType;
     private int boostDefense;
 
+    //Under construction
     public Accessories(String name, int attackBoost, int defenseBoost) {
         this.increaseAttackPower = increaseAttackPower;
         this.newAttackType = newAttackType;

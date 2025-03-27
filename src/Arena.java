@@ -14,24 +14,24 @@ public class Arena {
         System.out.println("Battle begins!");
         announceFighters(hero, villain);
 
-        // Display battle start image
+        // Displays the battle start image
         showBattleStartImage();
 
         System.out.println("\nPress Enter to start the battle...");
         scanner.nextLine(); // Wait for user to press Enter
 
-        // Remove the image
+        // Removes the image when the first Enter is pressed
         removeBattleStartImage();
 
         while (!hero.isDead() && !villain.isDead()) {
             System.out.println("\nPress Enter to continue...");
-            scanner.nextLine(); // Wait for user to press Enter
+            scanner.nextLine();
 
             if (random.nextBoolean()) {
                 hero.takeTurn(villain);
                 if (!villain.isDead()) {
                     System.out.println("\nPress Enter for " + villain.getName() + "'s turn...");
-                    scanner.nextLine(); // Wait for Enter again
+                    scanner.nextLine();
                     villain.takeTurn(hero);
                 }
             } else {
@@ -44,7 +44,7 @@ public class Arena {
             }
         }
 
-        // Announce winner and show game over image
+        // Announces the winner and shows game over image
         announceWinner(hero, villain);
         showGameOverImage();
     }

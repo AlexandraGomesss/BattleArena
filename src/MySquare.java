@@ -13,32 +13,33 @@ public class MySquare {
     private Random random = new Random();
 
     public MySquare(int x, int y, int cellSize, String leftName, String rightName) {
-        // Load the background
+        // Sets the background image
         picture = new Picture(x, y, "resources/bg.jpg");
         picture.draw();
 
-        // Load the left player image
+        // Sets the left player image
         leftPlayer = new Picture(x + 75, y + cellSize / 4, "resources/dps.png");
         leftPlayer.draw();
 
-        // Load the right player image
+        // Sets the right player image
         rightPlayer = new Picture(x + cellSize - cellSize / 2.7, y + cellSize / 4, "resources/caster.png");
         rightPlayer.draw();
 
-        // Display left player's name above their head
+        // Displays left player's name
         leftPlayerName = new Text(x + 110, y + cellSize / 4 - 20, leftName);
         leftPlayerName.setColor(Color.WHITE);
         leftPlayerName.draw();
 
-        // Display right player's name above their head
+        // Displays right player's name
         rightPlayerName = new Text(x + cellSize - cellSize / 3.4, y + cellSize / 4 - 20, rightName);
         rightPlayerName.setColor(Color.WHITE);
         rightPlayerName.draw();
 
-        // Start character movement animation
+        // Starts the character movement animation
         startRandomAnimation();
     }
 
+    //Animation method (calls the random movement method)
     private void startRandomAnimation() {
         Thread animationThread = new Thread(() -> {
             while (true) {
@@ -53,6 +54,7 @@ public class MySquare {
         animationThread.start();
     }
 
+    //Method to make the characters move randomly to the left and right
     private void moveCharactersRandomly() {
         int moveAmount = random.nextInt(6) + 2; // Move between 2-7 pixels per step
         boolean moveLeft = random.nextBoolean(); // Randomly decide direction
@@ -65,7 +67,7 @@ public class MySquare {
             rightPlayer.translate(-moveAmount, 0);
         }
 
-        // Constrain movement within a reasonable range
+        // Limits the range at which characters are allow to move / so they dont overlap
         int leftMinX = 60, leftMaxX = 120;
         int rightMinX = 500, rightMaxX = 560;
 
