@@ -1,3 +1,4 @@
+import org.academiadecodigo.simplegraphics.pictures.Picture;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -5,11 +6,22 @@ public class Arena {
 
     private Random random = new Random();
     private Scanner scanner = new Scanner(System.in);
+    private Picture battleStartImage;
+    private Picture gameOverImage;
 
     // Battle begins
     public void hostFights(Creature hero, Creature villain) {
         System.out.println("Battle begins!");
         announceFighters(hero, villain);
+
+        // Display battle start image
+        showBattleStartImage();
+
+        System.out.println("\nPress Enter to start the battle...");
+        scanner.nextLine(); // Wait for user to press Enter
+
+        // Remove the image
+        removeBattleStartImage();
 
         while (!hero.isDead() && !villain.isDead()) {
             System.out.println("\nPress Enter to continue...");
@@ -18,7 +30,7 @@ public class Arena {
             if (random.nextBoolean()) {
                 hero.takeTurn(villain);
                 if (!villain.isDead()) {
-                    System.out.println("\nPress Enter for " +  villain.getName() + "'s turn...");
+                    System.out.println("\nPress Enter for " + villain.getName() + "'s turn...");
                     scanner.nextLine(); // Wait for Enter again
                     villain.takeTurn(hero);
                 }
@@ -31,11 +43,30 @@ public class Arena {
                 }
             }
         }
+
+        // Announce winner and show game over image
         announceWinner(hero, villain);
+        showGameOverImage();
     }
 
     public void announceFighters(Creature hero, Creature villain) {
         System.out.println("Pay attention, our contenders are entering the arena! " + hero.getName() + " vs " + villain.getName() + "!");
+    }
+
+    private void showBattleStartImage() {
+        battleStartImage = new Picture(200, 50, "resources/fight.png"); // Adjust position as needed
+        battleStartImage.draw();
+    }
+
+    private void removeBattleStartImage() {
+        if (battleStartImage != null) {
+            battleStartImage.delete(); // Remove the image from the screen
+        }
+    }
+
+    private void showGameOverImage() {
+        gameOverImage = new Picture(200, 100, "resources/game_over.png"); // Adjust position as needed
+        gameOverImage.draw();
     }
 
     private void announceWinner(Creature hero, Creature villain) {
